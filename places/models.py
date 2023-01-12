@@ -12,3 +12,18 @@ class Place(models.Model):
     
     def __str__(self):
         return self.title
+
+
+class PlaceImage(models.Model):
+    image = models.ImageField(verbose_name="Изображение")
+    
+    sort = models.IntegerField(verbose_name="Сортировка")
+    
+    place = models.ForeignKey(
+        Place,
+        on_delete=models.CASCADE,
+        verbose_name="Место",
+    )
+    
+    def __str__(self):
+        return f'{self.sort} {self.place}'
