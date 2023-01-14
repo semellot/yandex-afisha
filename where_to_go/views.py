@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 
 from places.models import Place
@@ -27,3 +28,8 @@ def start_page(request):
         )
     
     return render(request, 'index.html', {'json': json})
+
+
+def detail_place(request, place_id):
+    place = get_object_or_404(Place, pk=place_id)
+    return render(request, 'detail_place.html', {'place': place})
