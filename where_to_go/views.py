@@ -24,7 +24,7 @@ def start_page(request):
                 'properties': {
                     'title': place.title,
                     'placeId': place.id,
-                    'detailsUrl': '/static/places/moscow_legends.json'
+                    'detailsUrl': f'places/{place.id}'
                 }
             }
         )
