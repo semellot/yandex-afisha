@@ -12,18 +12,29 @@ class Place(models.Model):
     
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering = ['title',]
 
 
 class PlaceImage(models.Model):
     image = models.ImageField(verbose_name='Изображение')
     
-    sort = models.IntegerField(verbose_name='Сортировка')
+    order = models.PositiveIntegerField(
+        verbose_name='Сортировка',
+        default=0,
+        blank=False,
+        null=False
+    )
     
     place = models.ForeignKey(
         Place,
         on_delete=models.CASCADE,
-        verbose_name='Место',
+        verbose_name='Место'
     )
     
     def __str__(self):
-        return f'{self.sort} {self.place}'
+        return self.place.title
+    
+    class Meta:
+        ordering = ['order',]

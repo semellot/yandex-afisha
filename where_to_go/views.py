@@ -45,7 +45,7 @@ def detail_place(request, place_id):
         }
     }
     
-    place_images = PlaceImage.objects.filter(place=place)
+    place_images = PlaceImage.objects.filter(place=place).order_by('order')
     for place_image in place_images:
         response_data['imgs'].append(place_image.image.url)
     
