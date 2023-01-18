@@ -6,6 +6,13 @@ from tinymce.models import HTMLField
 class Place(models.Model):
     title = models.CharField(max_length=200, verbose_name='Заголовок')
     
+    order = models.PositiveIntegerField(
+        verbose_name='Сортировка',
+        default=0,
+        blank=False,
+        null=False
+    )
+    
     description_short = models.TextField(verbose_name='Краткое описание')
     description_long = HTMLField(verbose_name='Полное описание')
     
@@ -16,7 +23,7 @@ class Place(models.Model):
         return self.title
     
     class Meta:
-        ordering = ['title',]
+        ordering = ['order',]
 
 
 class PlaceImage(models.Model):
