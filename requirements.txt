@@ -2,3 +2,4 @@ Django
 environs==9.5.*
 Pillow==8.4.*
 django-admin-sortable2
+django-tinymce
