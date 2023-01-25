@@ -4,7 +4,11 @@ from tinymce.models import HTMLField
 
 
 class Place(models.Model):
-    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    title = models.CharField(
+        max_length=200,
+        verbose_name='Заголовок',
+        unique=True
+    )
     
     order = models.PositiveIntegerField(
         verbose_name='Сортировка',
@@ -27,7 +31,7 @@ class Place(models.Model):
 
 
 class PlaceImage(models.Model):
-    image = models.ImageField(verbose_name='Изображение')
+    image = models.ImageField(verbose_name='Изображение', blank=True)
     
     order = models.PositiveIntegerField(
         verbose_name='Сортировка',
