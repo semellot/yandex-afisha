@@ -77,16 +77,16 @@ python manage.py load_place [json_url]
 
 ```json
 {
-  "title": (Заголовок),
+  "title": "Заголовок",
   "imgs": [
-    (ссылка),
-    ...
+    "http://link1/",
+    "http://link2/",
   ],
-  "description_short": (Краткое описание),
-  "description_long": (Полное описание),
+  "description_short": "Краткое описание...",
+  "description_long": "Полное описание...",
   "coordinates": {
-    "lng": (Координата долготы),
-    "lat": (Координата широты)
+    "lng": "[Координата долготы]",
+    "lat": "[Координата широты]"
   }
 }
 ```
