@@ -24,10 +24,10 @@ class Command(BaseCommand):
         
         place, created = Place.objects.get_or_create(
             title=json_place['title'],
-            description_short=json_place['description_short'],
-            description_long=json_place['description_long'],
-            coordinate_lng=json_place['coordinates']['lng'],
-            coordinate_lat=json_place['coordinates']['lat'],
+            short_description=json_place['description_short'],
+            long_description=json_place['description_long'],
+            longitude=json_place['coordinates']['lng'],
+            latitude=json_place['coordinates']['lat'],
         )
         
         for image_url in json_place['imgs']:            

@@ -19,7 +19,7 @@ def start_page(request):
                 'type': 'Feature',
                 'geometry': {
                     'type': 'Point',
-                    'coordinates': [place.coordinate_lng, place.coordinate_lat]
+                    'coordinates': [place.longitude, place.latitude]
                 },
                 'properties': {
                     'title': place.title,
@@ -37,11 +37,11 @@ def detail_place(request, place_id):
     response_data = {
         'title': place.title,
         'imgs': [],
-        'description_short': place.description_short,
-        'description_long': place.description_long,
+        'description_short': place.short_description,
+        'description_long': place.long_description,
         'coordinates': {
-            'lng': place.coordinate_lng,
-            'lat': place.coordinate_lat
+            'lng': place.longitude,
+            'lat': place.latitude
         }
     }
     

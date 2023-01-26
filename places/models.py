@@ -17,11 +17,11 @@ class Place(models.Model):
         null=False
     )
     
-    description_short = models.TextField(verbose_name='Краткое описание')
-    description_long = HTMLField(verbose_name='Полное описание')
+    short_description = models.TextField(verbose_name='Краткое описание')
+    long_description = HTMLField(verbose_name='Полное описание')
     
-    coordinate_lng = models.FloatField(verbose_name='Долгота')
-    coordinate_lat = models.FloatField(verbose_name='Широта')
+    longitude = models.FloatField(verbose_name='Долгота', blank=False)
+    latitude = models.FloatField(verbose_name='Широта', blank=False)
     
     def __str__(self):
         return self.title
@@ -31,7 +31,11 @@ class Place(models.Model):
 
 
 class PlaceImage(models.Model):
-    image = models.ImageField(verbose_name='Изображение', blank=True)
+    image = models.ImageField(
+        verbose_name='Изображение',
+        blank=False,
+        null=True
+    )
     
     order = models.PositiveIntegerField(
         verbose_name='Сортировка',
