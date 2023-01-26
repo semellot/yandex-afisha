@@ -1,7 +1,5 @@
-import json
 from django.db.models import Prefetch
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -49,5 +47,4 @@ def detail_place(request, place_id):
     for place_image in place.place_images.all():
         response_data['imgs'].append(place_image.image.url)
     
-    return HttpResponse(json.dumps(response_data, ensure_ascii=False),
-         content_type='application/json')
+    return JsonResponse(response_data)
