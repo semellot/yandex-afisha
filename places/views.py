@@ -1,4 +1,5 @@
 import json
+from django.db.models import Prefetch
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
@@ -12,9 +13,8 @@ def start_page(request):
         'type': 'FeatureCollection',
         'features': []
     }
-    places = Place.objects.all()
     
-    for place in places:
+    for place in Place.objects.all():
         geo_json['features'].append(
             {
                 'type': 'Feature',
@@ -34,7 +34,7 @@ def start_page(request):
 
 
 def detail_place(request, place_id):
-    place = get_object_or_404(Place, pk=place_id)
+    place = Place.objects.prefetch_related(Prefetch('place_images')).get(pk=place_id)
     response_data = {
         'title': place.title,
         'imgs': [],
