@@ -2,6 +2,7 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from django.urls import reverse
 
 from .models import Place, PlaceImage
 
@@ -24,7 +25,7 @@ def start_page(request):
                 'properties': {
                     'title': place.title,
                     'placeId': place.id,
-                    'detailsUrl': f'places/{place.id}'
+                    'detailsUrl': reverse('places', args=(place.id,))
                 }
             }
         )
@@ -45,7 +46,7 @@ def detail_place(request, place_id):
         }
     }
     
-    for place_image in place.place_images:
+    for place_image in place.place_images.all():
         response_data['imgs'].append(place_image.image.url)
     
     return HttpResponse(json.dumps(response_data, ensure_ascii=False),
