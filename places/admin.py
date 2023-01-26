@@ -11,9 +11,10 @@ class PlaceImageTabularInline(SortableTabularInline):
     ordering = ['order',]
     
     def headshot_image(self, obj):
-        return format_html('<img src="{url}" height="200px" />'.format(
-            url = obj.image.url)
-    )
+        return format_html(
+            '<img src="{}" style="max-height: 200px; max-width: 400px" />',
+            format(obj.image.url)
+        )
 
 @admin.register(Place)
 class PlaceAdmin(SortableAdminMixin, admin.ModelAdmin):
