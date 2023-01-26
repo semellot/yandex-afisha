@@ -22,12 +22,14 @@ class Command(BaseCommand):
         
         json_place = response.json()
         
-        place, created = Place.objects.get_or_create(
+        place, created = Place.objects.update_or_create(
             title=json_place['title'],
-            short_description=json_place['description_short'],
-            long_description=json_place['description_long'],
             longitude=json_place['coordinates']['lng'],
             latitude=json_place['coordinates']['lat'],
+            defaults={
+                'short_description': json_place['description_short'],
+                'long_description': json_place['description_long']
+            }
         )
         
         for image_url in json_place['imgs']:            
