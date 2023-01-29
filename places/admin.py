@@ -13,7 +13,7 @@ class PlaceImageTabularInline(SortableTabularInline):
     def headshot_image(self, obj):
         return format_html(
             '<img src="{}" style="max-height: 200px; max-width: 400px" />',
-            format(obj.image.url)
+            obj.image.url
         )
 
 @admin.register(Place)

@@ -32,11 +32,14 @@ class Command(BaseCommand):
             }
         )
         
-        for image_url in json_place['imgs']:            
+        for index, image_url in enumerate(json_place['imgs']):
             response_image = requests.get(image_url)
             response_image.raise_for_status()
             
-            place_image = PlaceImage.objects.create(place=place)
+            place_image = PlaceImage.objects.create(
+                place=place,
+                order=index
+            )
             
             image = BytesIO(response_image.content)
             
