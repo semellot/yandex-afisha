@@ -6,6 +6,8 @@
 
 Административная панель: https://semellot.pythonanywhere.com/admin/
 
+Доступы: admin/qazxsw12
+
 ## Как установить
 
 Для работы проекта вам понадобится Python 3.10:
