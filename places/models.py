@@ -19,11 +19,11 @@ class Place(models.Model):
     
     short_description = models.TextField(
         verbose_name='Краткое описание',
-        blank=False
+        blank=True
     )
     long_description = HTMLField(
         verbose_name='Полное описание',
-        blank=False
+        blank=True
     )
     
     longitude = models.FloatField(verbose_name='Долгота')
@@ -53,7 +53,7 @@ class PlaceImage(models.Model):
         Place,
         on_delete=models.CASCADE,
         verbose_name='Место',
-        related_name='place_images'
+        related_name='images'
     )
     
     def __str__(self):
